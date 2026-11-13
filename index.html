@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="St. Catharines Rebels U14 Boys animated playbook: Cross, Circle Motion, Man-to-Man, 2-3 Zone, Triangle and 2, Wolfpack and Wildcat.">
+<meta name="description" content="St. Catharines Rebels U14 Boys animated playbook: Cross, Circle Motion, 2 Up, Man-to-Man, 2-3 Zone, Triangle and 2, Wolfpack and Wildcat.">
 <meta name="theme-color" content="#B3152A">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Rebels">
@@ -306,6 +306,70 @@ const GUIDES = [];
   ]});
 })();
 
+/* ---------- 2 UP (press break) ---------- */
+(function(){
+  // Full court: we inbound at the LEFT baseline and attack the RIGHT basket.
+  // 4 inbounds from the ball side (low y). 2 screens away from the ball; 1 dives ball side to the short corner.
+  const ST={u4:[-3,25],u1:[23,20],u2:[23,31],u3:[41,7],u5:[41,43], ball:"u4"};
+  const SHAPE={u4:[7,36],u1:[5,10],u2:[32,25],u3:[53,9],u5:[53,41], ball:"u1"};
+  GUIDES.push({ id:"twoup", kind:"Press break", name:"2 Up", call:"2 Up", court:"full", labels:["WE INBOUND","THEIR BASKET"],
+    blurb:"Our press break. 2 screens away from the ball, 1 dives to the short corner, and we form a 2-1-2. Then reverse the ball and make the press chase.",
+    who:[["4 Inbounder","Takes it out. Steps in on the opposite side and stays even with the ball. Never get ahead of it."],
+         ["1 & 2 Guards","Start up near the free-throw line. 2 screens away from the ball and 1 dives to the short corner. Whoever does not catch it flashes to the middle."],
+         ["3 & 5 Deep","Drift down the court. Stay wide and be ready for a sideline pass."],
+         ["Everyone","However we get it in, we end up in a 2-1-2: two of us back with the ball, one in the middle, two deep."]],
+    scenes:[
+    { id:"twoup-line-up", chip:"Line up", title:"Line Up", lead:"Two guards up, two players deep.", start:ST, frames:[
+      {cap:"4 takes the ball out. 1 and 2 start up near the free-throw line. 3 and 5 start deep.", tags:[[10,25,"INBOUNDER"],[23,15,"2 UP"],[50,43,"DEEP"]]},
+      {u3:[53,9], u5:[53,41], cap:"3 and 5 drift down the court. Stay wide and stay ready for a sideline pass.", tags:[[60,45,"DRIFT DOWN"]]},
+      {cap:"We catch the inbound low: the short corner or the block. Never drift into the deep corner. That is where they trap you.", tags:[[20,10,"SHORT CORNER"],[9,3,"NOT HERE"]]},
+    ]},
+    { id:"twoup-1-entry", chip:"1 entry", title:"1 Entry", lead:"Screen away, dive to the short corner.", start:ST, frames:[
+      {cap:"4 takes it out. 1 is our first look."},
+      {u2:[21,26], cap:"2 steps across and screens for 1, on the side away from the ball.", tags:[[21,31,"SCREEN"]]},
+      {u1:[5,10], ball:"u1", cap:"1 dives down off the screen to the short corner, and catches the inbound pass there.", tags:[[19,9,"SHORT CORNER"]]},
+      {u2:[32,25], cap:"Now 2 flashes to the middle.", tags:[[32,20,"MIDDLE"]]},
+      {u4:[7,36], u3:[53,9], u5:[53,41], cap:"4 steps in on the opposite side and stays even with the ball. Never get ahead of it. 3 and 5 drift down.", tags:[[18,36,"STAY EVEN"]]},
+      {cap:"That is our 2-1-2: two of us back with the ball, one in the middle, two deep. Look up the court first.", tags:[[16,14,"2 BACK"],[32,20,"1 MIDDLE"],[60,45,"2 DEEP"]]},
+    ]},
+    { id:"twoup-2-entry", chip:"2 entry", title:"2 Entry", lead:"1 is covered, so the screener dives instead.", start:ST, frames:[
+      {cap:"Same start. 2 screens away from the ball and 1 dives."},
+      {u2:[21,26], u1:[5,10], cap:"But this time they take the short corner away. 1 is covered, so there is no pass.", tags:[[19,9,"COVERED"]]},
+      {u2:[8,34], ball:"u2", cap:"So 2 does not flash to the middle. He dives to the low block on the other side and catches it there.", tags:[[21,35,"LOW BLOCK"]]},
+      {u1:[32,25], cap:"Now 1 is the one who flashes to the middle.", tags:[[32,20,"MIDDLE"]]},
+      {u4:[8,12], u3:[53,9], u5:[53,41], cap:"4 steps in opposite the ball, even with it. 3 and 5 drift down. Same 2-1-2, other side."},
+    ]},
+    { id:"twoup-big-cut", chip:"3 or 5 entry", title:"3 or 5 Entry", lead:"Both guards covered? A deep player comes and gets it.", start:ST, frames:[
+      {u2:[21,26], u1:[5,10], cap:"2 screens, 1 dives, and they cover both of our guards. Now a deep player comes to the ball.", tags:[[19,9,"COVERED"]]},
+      {u3:[26,12], ball:"u3", cap:"3 sprints up and catches it above the free-throw line. This is our first look against a diamond press.", tags:[[13,24,"ABOVE THE LINE"]]},
+      {cap:"Catch it and pivot your shoulders up the court right away, so you can see the cutters.", tags:[[26,5,"TURN AND LOOK"]]},
+      {u2:[42,43], u1:[36,25], u4:[18,34], u5:[53,41], cap:"2 cuts to the sideline. 1 cuts to the middle. 4 steps in behind the ball. 5 drifts down. We are in the 2-1-2 again."},
+      {cap:"5 does the same thing on his side. After a made basket, 4 can also run the baseline to get a better angle."},
+    ]},
+    { id:"twoup-wipers", chip:"Windshield wipers", title:"Windshield Wipers", lead:"The heart of it. Reverse the ball and all three cutters swing across.", start:SHAPE, frames:[
+      {cap:"We are in our 2-1-2 and nothing is open up the court. So we reverse it."},
+      {ball:"u4", cap:"1 passes back to 4. The second the ball leaves his hands, the wipers go."},
+      {u3:[44,25], u2:[42,44], u5:[72,33], cap:"Wipers! 3 cuts to the middle. 2 cuts to the strong-side sideline. 5 cuts to the basket.", tags:[[44,20,"MIDDLE"],[42,48,"SIDELINE"],[72,27,"BASKET"]]},
+      {u1:[8,14], cap:"1 stays even with the ball as the new reversal man. We are in a 2-1-2 again, facing the other way."},
+      {ball:"u2", cap:"Now the sideline pass is open. Catch it, turn up the court, and go.", tags:[[52,46,"GO!"]]},
+    ]},
+    { id:"twoup-go", chip:"Go", title:"“Go!”", lead:"A special call when we need a quick one.", start:ST, frames:[
+      {cap:"“Go!” is only for special situations: we need a quick score, or they are pressuring us hard."},
+      {u3:[29,5], u5:[29,45], cap:"3 and 5 flash straight to the sidelines right away.", tags:[[29,11,"FLASH"]]},
+      {u2:[21,26], cap:"2 fakes like he is setting the screen for 1..."},
+      {u2:[58,27], cap:"...then breaks deep down the middle.", tags:[[58,34,"BREAK DEEP"]]},
+      {ball:"u2", skip:true, cap:"4 throws it over the top. This is often wide open against man. If it is not there, hit 3 or 5 on the sideline and run our normal rules."},
+    ]},
+    { id:"twoup-streak", chip:"Streak", title:"Streak", lead:"Hit the inbounder running for a fast break.", start:ST, frames:[
+      {cap:"After a made basket, 4 can take it out and then go."},
+      {u2:[21,26], u1:[5,10], ball:"u1", cap:"2 screens, 1 dives, and 4 gets it in to him quickly."},
+      {u4:[46,31], u3:[53,9], u5:[53,41], cap:"Then 4 steps in and streaks up the court.", tags:[[46,37,"STREAK!"]]},
+      {ball:"u4", skip:true, cap:"1 hits him on the run."},
+      {shot:"u4", cap:"Fast break the other way! If 4 is not open, he just fills the middle of our 2-1-2 and we run the normal rules.", tags:[[80,16,"LAYUP"]]},
+    ]},
+  ]});
+})();
+
 /* ---------- MAN-TO-MAN ---------- */
 (function(){
   const O={t1:[0,28],t2:[17,20],t3:[-17,20],t4:[22.5,3],t5:[-10,7]};
@@ -451,7 +515,7 @@ const GUIDES = [];
   // ---------- courts ----------
   const COURTS = {
     half: { vb:[-25.8,-1.2,51.6,34.4], s:1, hoop:[0,5.25] },
-    full: { vb:[-7.5,-2.5,109,55], s:1.5, hoop:[88.75,25] },
+    full: { vb:[-8.6,-2.5,110.6,55], s:1.5, hoop:[88.75,25] },
   };
   (function drawHalf(){
     const g = $("courtHalf"), yj = 5.25 + Math.sqrt(22.15*22.15 - 22*22);
@@ -473,8 +537,8 @@ const GUIDES = [];
      ["path",{d:"M 90 22 V 28",class:"c-line",style:"stroke-width:.5"}],["circle",{cx:88.75,cy:25,r:.75,class:"c-line",style:w}],
      ["path",{d:`M 94 3 H ${94-xj} A 22.15 22.15 0 0 0 ${94-xj} 47 H 94`,class:"c-line",style:w}],
     ].forEach(([t,a]) => g.appendChild(el(t,a)));
-    g.appendChild(el("text",{class:"c-label",transform:"translate(98.2 25) rotate(90)"},"OUR BASKET"));
-    g.appendChild(el("text",{class:"c-label",transform:"translate(-5.6 14) rotate(-90)"},"THEY INBOUND"));
+    g.appendChild(el("text",{class:"c-label",id:"lblR",transform:"translate(98.2 25) rotate(90)"},"OUR BASKET"));
+    g.appendChild(el("text",{class:"c-label",id:"lblL",transform:"translate(-6.7 8) rotate(-90)"},"THEY INBOUND"));
   })();
 
   // ---------- build cumulative states ----------
@@ -636,6 +700,7 @@ const GUIDES = [];
     C = sc.court; const full = C === COURTS.full, v = C.vb;
     $("court").setAttribute("viewBox", v.join(" "));
     const fl = $("floor"); fl.setAttribute("x",v[0]); fl.setAttribute("y",v[1]); fl.setAttribute("width",v[2]); fl.setAttribute("height",v[3]);
+    if (full){ const L = GUIDES[sc.guide].labels || ["THEY INBOUND","OUR BASKET"]; $("lblL").textContent = L[0]; $("lblR").textContent = L[1]; }
     $("courtHalf").removeAttribute("hidden"); $("courtFull").removeAttribute("hidden");
     $("courtHalf").setAttribute("style", full ? "display:none" : "display:inline");
     $("courtFull").setAttribute("style", full ? "display:inline" : "display:none");
